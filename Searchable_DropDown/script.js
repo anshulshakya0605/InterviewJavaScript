@@ -31,14 +31,14 @@ let searchInput = container.querySelector('#search');
 let lists = dropDownList.querySelector('.list')
 
 
-selectBtn.addEventListener('click', ()=>{
+selectBtn.addEventListener('click', () => {
     container.classList.toggle('active')
 })
 
-function addCountry(selectedCountry){
+function addCountry(selectedCountry) {
     lists.innerHTML = "";
-    countries.forEach((country)=>{
-        let isSelected = selectedCountry == country?"selected":"";
+    countries.forEach((country) => {
+        let isSelected = selectedCountry == country ? "selected" : "";
         let listItem = '<li class="' + isSelected + '">' + country + '</li>';
         lists.insertAdjacentHTML('beforeend', listItem);
     })
@@ -46,26 +46,26 @@ function addCountry(selectedCountry){
 }
 addCountry();
 
-function addClickEventToLi(){
-    lists.querySelectorAll('li').forEach(listItem =>{
-        listItem.addEventListener('click', ()=>{
+function addClickEventToLi() {
+    lists.querySelectorAll('li').forEach(listItem => {
+        listItem.addEventListener('click', () => {
             updateSelectCountry(listItem);
         })
     })
 }
 
-function updateSelectCountry(listItem){
+function updateSelectCountry(listItem) {
     searchInput.value = "";
     selectBtn.firstElementChild.innerHTML = listItem.innerHTML;
     container.classList.remove('active')
     addCountry(listItem.innerHTML);
 }
 
-searchInput.addEventListener('keyup', ()=>{
+searchInput.addEventListener('keyup', () => {
     let searchInputValue = searchInput.value.toLowerCase();
-    let filteredCountries = countries.filter(country=>{
+    let filteredCountries = countries.filter(country => {
         return country.toLowerCase().startsWith(searchInputValue);
-    }).map(country=>{
+    }).map(country => {
         let listItem = '<li>' + country + '</li>';
         return listItem;
     }).join("");
