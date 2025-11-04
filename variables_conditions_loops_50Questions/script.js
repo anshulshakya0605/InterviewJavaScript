@@ -215,15 +215,196 @@ let str = 'raman';
 // }
 
 
+// Write a loop to count how many vowels are in a string.
 
-function findFactorial(num) {
-  let result = 1;  // start with 1 (since multiplying by 0 gives 0)
+
+// function countVowels(str) {
+//   let count = 0;
+//   const vowels = 'aeiouAEIOU';
+
+//   for(let i = 0; i < str.length; i++){
+//     if (vowels.indexOf(str[i]) !== -1) {
+//       count++
+//     }
+//   }
+//   return count;
+// }
+// const myStr = "Jay Siya Ram";
+// const vowelCount = countVowels(myStr);
+// console.log(`The String ${myStr} has ${vowelCount} vowels.`);
+
+
+
+// function findFactorial(num) {
+//   let result = 1;  // start with 1 (since multiplying by 0 gives 0)
   
-  for (let i = 1; i <= num; i++) {
-    result *= i;  // multiply result by i each time
-  }
+//   for (let i = 1; i <= num; i++) {
+//     result *= i;  // multiply result by i each time
+//   }
 
-  return result; // return the final factorial
+//   return result; // return the final factorial
+// }
+
+// console.log(findFactorial(5)); // 120
+
+
+
+
+
+
+// Print the Fibonacci series up to 10 terms.
+
+// function fibonacciSeries(term) {
+//   let a = 0;
+//   let b = 1;
+//   const printFibonacci = [];
+
+//   for(let i = 0; i < term; i++) {
+//     printFibonacci.push(a)
+//     let nextTerm = a + b;
+//     a = b;
+//     b = nextTerm;
+//   }
+//   console.log(printFibonacci);
+// }
+
+// fibonacciSeries(10)
+
+
+
+
+// Write a nested loop to print a pattern:
+
+// for(let i = 0; i < 5; i++) {
+//   let pattern = "";
+//   for(let j = 1; j <= i; j++) {
+//     pattern+= "*"
+//   }
+//   console.log(pattern);
+  
+// }
+
+
+
+
+// Use break to stop a loop when number equals 5.?
+
+// for(let i =0; i < 10; i++) {
+//   if (i === 5) {
+//     break
+//   }
+//   console.log(i);
+// }
+
+// let num = 0;
+// while(num < 10){
+//   if (num === 5) {
+//     break
+//   }
+//   console.log(num);
+//   num++ 
+// }
+
+
+
+// Use continue to skip printing number 3.
+
+// for(let i = 0; i < 10; i++) {
+//   if (i === 3) {
+//     continue;
+//   }
+//   console.log(i);
+// }
+
+// let num = 0;
+// while(num < 10) {
+//   num++
+//   if (num === 3) {
+//     continue
+//   }
+//   console.log(num);
+// }
+
+
+
+
+// Loop through an array and double each element using a loop.
+
+// let numbers = [1,2,3,4];
+
+// console.log(numbers.map((num) => num * 2));
+
+// for(let i = 1; i <= numbers.length; i++) {
+//   console.log(i * 2);
+// }
+
+// console.log(numbers.filter((num) => num%2 ===0));
+
+
+
+
+// Check if a number is positive, negative, or zero.
+
+
+// function checkNumberType(num) {
+// if (num > 0) {
+//   console.log(`The num ${num} is positive`);
+// } else if(num < 0){
+//   console.log(`The num ${num} is negative`);
+// }else {
+//   console.log(`The num ${num} is zero`);
+// }
+// }
+
+// checkNumberType(20)
+// checkNumberType(-20)
+// checkNumberType(0)
+
+// Check if a number is even or odd.
+
+// function checkEvenOdd(num){
+// console.log(num%2 === 0 ? 'even' : 'odd')
+// }
+// checkEvenOdd(5)
+// checkEvenOdd(10)
+// checkEvenOdd(-10)
+
+// Check which of two numbers is greater.
+
+// numberA=10;
+// numberB=12
+
+// function checkGreater(numberA,numberB){
+//  return numberA > numberB ? `numbera ${numberA} is gretaer than numberb ${numberB} `: `numbera ${numberB} is gretaer than number b `
+// }
+
+// console.log(checkGreater(4,5))
+
+
+// Write a condition to check if a year is a leap year.
+
+
+//   const year = 9090
+
+//  if(year%4 === 0 || year % 400 === 0){
+//     console.log(`${year} is a leap year `)
+//   }
+//   else{
+//     console.log(`${year} is not a leap year `)
+    
+//   }
+
+
+// Check if a character is a vowel or consonant.
+
+const vowels = 'aeiouAEIOU';
+
+function checkVowels(char){
+ return vowels.includes(char) ? 'vowel' : 'consonat'
+
 }
 
-console.log(findFactorial(5)); // 120
+console.log(checkVowels('i'));
+
+
+
