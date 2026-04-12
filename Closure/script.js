@@ -59,10 +59,24 @@ function CartCounter() {
 }
 
 const cartCounter = CartCounter();
-cartCounter.increment()
-cartCounter.increment()
-cartCounter.increment()
-cartCounter.decrement()
-
+cartCounter.increment() /// 1
+cartCounter.increment() /// 2
+cartCounter.increment() /// 3
+cartCounter.decrement() /// 2
 
 console.log(cartCounter.value());
+
+
+function createCart() {
+    let cartCount = 0;
+
+    return function addToCart(){
+        cartCount++;
+        console.log(`Cart count: ${cartCount}`);
+    }
+}
+
+const cart = createCart();
+cart(); // output: Cart count: 1
+cart(); // output: Cart count: 2
+cart(); // output: Cart count: 3

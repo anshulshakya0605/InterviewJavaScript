@@ -1,155 +1,165 @@
-1. Array-based Coding (15 Questions)
+# JavaScript Interview Question 
+
+## Q1: What is Closure in Javascript ? 
+
+** Answer: **
+A closure in javascript is a function that has access to variables form his outer (lexical) scope even after the outer function has finished executing.
+
+---
+One Line: --Closure allows a function to retain access to its lexical scope even after the parent function has executed.
+
+---
+Example: 
+```
+function CartCounter() {
+
+    let _count = 0;
+    function _updateCount(val) {
+        return _count += val;
+    }
+
+    return {
+        increment() {
+            _updateCount(+1)
+        },
+        decrement() {
+            _updateCount(-1)
+        },
+        value() { 
+            return _count;
+        }
+    }
+}
+
+const cartCounter = CartCounter();
+cartCounter.increment() /// 1
+cartCounter.increment() /// 2
+cartCounter.increment() /// 3
+cartCounter.decrement() /// 2
+
+console.log(cartCounter.value());
+```
+
+----
+
+```
+function createCart() {
+    let cartCount = 0;
+
+    return function addToCart(){
+        cartCount++;
+        console.log(`Cart count: ${cartCount}`);
+    }
+}
+
+const cart = createCart();
+cart(); // output: Cart count: 1
+cart(); // output: Cart count: 2
+cart(); // output: Cart count: 3
+```
+
+---
+
+## Q2: What is This Keyword in Javascript ?
+
+** Answer: **
+The this keyword is javascript refers to the object that is currently executing the function, and it's value determined by how the function is called.
+
+---
+This always depends on how the function is called. In object method, it refers to that object. In regular function, it refers to global object. In arrow function, it takes this from its parent scope. 
+
+---
+ Example
+
+ ```
+ console.log(this); // global object (window in browser,) local scope in node {} empty object
+
+const user = {
+    name: 'Ram',
+    age: 30,
+    getName(){
+        console.log(`${this.name} is ${this.age} years old.`);
+    }
+}
+
+user.getName(); // Ram is 30 years old.
+```
+```
+// use Arrow function
+
+const user1 = {
+    name: 'Siya',
+    getName: () => {
+        console.log(this.name);
+        
+    }
+}
+user1.getName(); // undefined (arrow function does not have its own this, it inherits from the parent scope, which is global object in this case)
+```
+
+Real Example: 
+```
+/// Shopping cart logic here
+
+const shoppingCart = {
+    items: [],
+    costumers: 'Ram Ji',
+
+    // this will refers to the shoppingCart object
+    addItems(product, price){
+        this.items.push({product, price});
+        console.log(`${product} added to ${this.costumers}'s cart.`);
+    },
+
+    getTotalCost(){
+        const totalCost = this.items.reduce((sum, item) => sum + item.price, 0)
+        return `Total cost: Rs: ${totalCost}`;
+    }
+}
+
+shoppingCart.addItems("Laptop", 50000); // Laptop added to Ram Ji's cart.
+shoppingCart.addItems("Phone", 20000); // Phone added to Ram Ji's cart.
+
+console.log(shoppingCart.getTotalCost()); // Total cost: Rs: 70000
+```
+
+---
+
+## Q3: What is Currying in JavaScript ? 
+
+** Answer: **  
+Currying is a technique in javascript where a function is transformed into a sequence of functions, each taking one argument at a time instead of taking all argument at once.
+
+---
+
+Example:
+
+```
+function add(a){
+    return function(b){
+        return function(c){
+            return a+b+c;
+        }
+    }
+}
+
+console.log(add(4)(5)(6)); // 15
+```
+
+Real Example: 
+```
+function applyDiscount(discount){
+    return function(price){
+        return price - (price * discount);
+    }
+}
+
+const tenPercentDiscount = applyDiscount(0.1);
+console.log(tenPercentDiscount(950)) // 855
+console.log(tenPercentDiscount(9895)); // 8905.5
+
+const twentyPercentDiscount = applyDiscount(0.2);
+console.log(twentyPercentDiscount(950)) // 760
+console.log(twentyPercentDiscount(9895)); // 7916
+```
 
-Write a program to find the maximum number in an array.
-
-Find the minimum number in an array using a loop.
-
-Reverse an array without using .reverse().
-
-Count how many even and odd numbers are in an array.
-
-Check if an array is sorted (ascending order).
-
-Find the sum of all numbers in an array using a for loop.
-
-Create a new array with all numbers doubled.
-
-Remove duplicate elements from an array.
-
-Merge two arrays and sort the result in ascending order.
-
-Find the second largest element in an array.
-
-Count the number of times each element appears in an array (frequency counter).
-
-Write a program to find common elements between two arrays.
-
-Filter out numbers greater than 50 using a loop (without .filter()).
-
-Find the index of a specific element manually (without .indexOf()).
-
-Rotate an array by 1 position to the right.
-
-🧵 2. String-based Coding (15 Questions)
-
-Count the number of vowels and consonants in a string.
-
-Reverse a string without using .reverse().
-
-Check if a string is a palindrome.
-
-Count how many times a character appears in a string.
-
-Convert a string to title case (capitalize first letter of each word).
-
-Find the longest word in a sentence.
-
-Replace all spaces in a string with -.
-
-Count how many words are in a sentence.
-
-Remove duplicate characters from a string.
-
-Check if two strings are anagrams (e.g., listen and silent).
-
-Extract all digits from a string and sum them.
-
-Convert a string like "hello world" to "World Hello".
-
-Find how many uppercase and lowercase letters are in a string.
-
-Check if a string starts and ends with the same character.
-
-Write a function to compress a string like "aaabbcccc" → "a3b2c4".
-
-🧱 3. Object-based Coding (15 Questions)
-
-Create an object with name, age, and city, then print each property using a loop.
-
-Add a new key to an object using Object.assign() or spread operator.
-
-Delete a key from an object.
-
-Check if a key exists in an object.
-
-Count how many keys are in an object.
-
-Loop through an object and print both key and value.
-
-Find the object with the highest score in an array of student objects:
-
-const students = [
-  { name: "A", score: 85 },
-  { name: "B", score: 92 },
-  { name: "C", score: 78 },
-];
-
-
-Merge two objects into one.
-
-Convert an object to an array of [key, value] pairs.
-
-Convert an array of [key, value] pairs back into an object.
-
-Find total price of all items in:
-
-const cart = [
-  { item: "Shirt", price: 500 },
-  { item: "Jeans", price: 1200 },
-  { item: "Shoes", price: 2000 },
-];
-
-
-Filter students with marks > 80 from an array of objects.
-
-Sort an array of objects by a numeric field (like age or marks).
-
-Count how many times each city appears in:
-
-const users = [
-  { city: "Delhi" },
-  { city: "Mumbai" },
-  { city: "Delhi" },
-];
-
-
-Clone an object without referencing the original.
-
-⚙️ 4. Mixed Logic (Array + String + Condition + Loop) (5 Questions)
-
-Given an array of strings, count how many contain the letter 'a'.
-
-Given an array of names, print only those with length > 5.
-
-Given an array of numbers, print "Even" if all are even, otherwise "Mixed".
-
-Convert an array of strings to uppercase and print only those that start with 'S'.
-
-Given an array of sentences, count the total number of words across all.
-
-🧠 Bonus (Complex Logic Mix-up – Optional Challenges)
-
-Flatten a nested array (e.g., [1, [2, [3]]] → [1,2,3]).
-
-Write a function to remove falsy values from an array (false, 0, '', null, undefined).
-
-Find all unique characters from an array of strings.
-
-From an array of users, get only the names of those older than 25.
-
-Count the occurrences of each letter in a string (return as object).
-
-Find the most frequent number in an array.
-
-Group students by grade using an object.
-
-Combine two arrays into one object:
-
-const keys = ["name", "age"];
-const values = ["Anshul", 25];
-// Output: { name: "Anshul", age: 25 }
-
-
-Create an object showing how many times each number appears in an array.
-
-Remove all duplicates from an array of objects (based on id key).

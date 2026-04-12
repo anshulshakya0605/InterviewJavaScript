@@ -5,8 +5,8 @@
 // const z = 30;
 // x = 15;
 // y = 25;
-// z = 35; // Uncomment this line and observe the error // beacuse of assignment error
-// console.log(x, y, z); // 15 ,25,30   // var mai reasign ho skta hai or redeclare bhi 
+// z = 35; // Uncomment this line and observe the error // because of assignment error
+// console.log(x, y, z); // 15 ,25,30   // var mai reassign ho skta hai or redeclare bhi 
 
 
 // What is the difference between var, let, and const?
@@ -397,14 +397,48 @@ let str = 'raman';
 
 // Check if a character is a vowel or consonant.
 
-const vowels = 'aeiouAEIOU';
+// const vowels = 'aeiouAEIOU';
 
-function checkVowels(char){
- return vowels.includes(char) ? 'vowel' : 'consonat'
+// function checkVowels(char){
+//  return vowels.includes(char) ? 'vowel' : 'consonant'
 
+// }
+
+// console.log(checkVowels('b'));
+
+
+// Q  Use nested if to check grades:
+
+// >=90 => A
+// >=80 => B
+// >=70 => C
+// >=60 => D
+// else => F
+
+// function checkGrades(marks) {
+//     if(marks >= 90){
+//         console.log("A");
+//     }else if(marks >= 80){
+//         console.log("B");
+//     }else if(marks >= 70){
+//         console.log("C");
+//     }else if(marks >= 60){
+//         console.log("D");
+//     }else {
+//         console.log("F");
+//     }
+// }
+// console.log(checkGrades(95));
+
+
+
+// Write a program that takes two numbers and checks if both are positive.
+
+function checkBothPositive(num1, num2) {
+  if (num1 > 0 && num2 > 0) {
+    console.log("Both numbers are positive");
+  } else {
+    console.log("Both numbers are not positive");
+  } 
 }
-
-console.log(checkVowels('i'));
-
-
-
+console.log(checkBothPositive(2, 5));
