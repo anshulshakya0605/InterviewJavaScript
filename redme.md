@@ -317,3 +317,177 @@ const printName = products.forEach((product) => {
 `map()` is used when we need a transformed array, especially in React rendering, whereas `forEach()` is used for side effects like logging or API calls since it does not return anything.
 
 ---
+
+## Q9: What is Event Loop in js?
+
+** Answer: ** 
+The `Event Loop` is a mechanism in JavaScript that continuously monitors the call stack and task queues, and executes asynchronous callbacks when the call stack is empty.
+
+Example: 
+```
+console.log("Start");
+
+setTimeout(() => {
+  console.log("Timeout");
+}, 0);
+
+console.log("End");
+
+
+// Output: 
+
+// Start
+// End
+// Timeout
+```
+### Why this output?
+
+step-by-step:
+
+"Start" → stack
+setTimeout → Web API
+"End" → stack
+setTimeout callback → queue me
+Stack empty → Event Loop → execute callback
+
+---
+
+## Microtask vs Callback Queue (🔥 Interview Favorite)
+
+** Ans: ** 
+1️⃣ Microtask Queue (High Priority)
+Promise
+async/await
+
+2️⃣ Callback Queue (Low Priority)
+setTimeout
+setInterval
+
+👉 Rule:
+👉 Microtask pehle execute hota hai
+
+---
+Example:
+```
+console.log("Start");
+
+setTimeout(() => console.log("Timeout"), 0);
+
+Promise.resolve().then(() => console.log("Promise"));
+
+console.log("End");
+
+/*
+Output: 
+Start
+End
+Promise
+Timeout
+*/
+
+```
+
+---
+## What is the role of event loop?
+==> : Manage async tasks without blocking main thread
+
+“JavaScript is single-threaded, but it handles asynchronous operations using the event loop. The event loop continuously checks the call stack and task queues, and executes callbacks when the stack is empty. It ensures non-blocking execution for operations like API calls, timers, and events.”
+
+---
+
+## Q10: What is Callback Function in js?
+**  Answer: **
+A `callback` is a function that is passed as an argument to another function and is executed after the completion of that function.
+
+Example: 
+```
+function fetchData(callback) {
+  setTimeout(() => {
+    callback("Data received");
+  }, 1000);
+}
+
+fetchData((data) => {
+  console.log(data);
+});
+```
+
+---
+
+## Q11: What is Promise in javascript?
+
+** Answer: ** 
+A `Promise` in JavaScript represents the eventual completion (or failure) of an asynchronous operation and its resulting value. A promise can be in one of three states:
+
+*`Pending`: The initial state, where the operation has not completed yet.
+
+*`Fulfilled`: The operation completed successfully.
+
+*`Rejected`: The operation failed.
+
+Example: 
+```
+fetch("/products")
+  .then(res => res.json())
+  .then(data => console.log(data))
+  .catch(err => console.log(err));
+  ```
+Promise is replacement of callback
+
+---
+## Q12: What is the async/await in js?
+** Answer: ** 
+In JavaScript, `async and await` are keywords used to handle asynchronous operations (like fetching data or reading files) in a way that looks and feels like synchronous code. Introduced in ES2017, they are "syntactic sugar" built on top of `Promises` to make code cleaner and easier to read. 
+
+Example: 
+```
+async function getProducts() {
+  try {
+    const res = await fetch("/products");
+    const data = await res.json();
+    console.log(data);
+  } catch (err) {
+    console.log(err);
+  }
+}
+```
+
+---
+
+## Q13: What is Debouncing in js?
+
+** Answer: ** 
+`Debouncing` is a technique that delays the execution of a function until a specified time has passed after the last event trigger, preventing multiple rapid function calls.
+
+Example:
+
+```
+function debounce(func, delay) {
+  let timer;
+
+  return function (...args) {
+    clearTimeout(timer);
+
+    timer = setTimeout(() => {
+      func.apply(this, args);
+    }, delay);
+  };
+}
+
+
+const search = (query) => {
+  console.log("API call for:", query);
+};
+
+const debouncedSearch = debounce(search, 500);
+
+// simulate typing
+debouncedSearch("i");
+debouncedSearch("ip");
+debouncedSearch("iphone");  /// Output API call for: iphone
+
+```
+Debouncing is a performance optimization technique used to limit the execution of a function by delaying it until the user stops triggering the event. It is commonly used in scenarios like search inputs to avoid multiple API calls and improve performance.
+
+---
+
