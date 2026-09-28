@@ -20,3 +20,21 @@ const debouncedSearch = debounce(search, 500);
 debouncedSearch("i");
 debouncedSearch("ip");
 debouncedSearch("iphone");
+
+
+function throttle(func, delay) {
+  const lastTime = 0;
+  return function(){
+    const currentTime = Date.now();
+    if(currentTime - lastTime >= delay){
+      currentTime = lastTime;
+      func();
+    }
+  }
+}
+
+const handleScroll = throttle(() => {
+  console.log("Scrolling...")
+}, 1000)
+
+window.addEventListener('scroll', handleScroll);

@@ -2,7 +2,7 @@
 
 ## Q1: What is Closure in Javascript ? 
 
-** Answer: **
+***Answer:***
 A `closure` in javascript is a function that has access to variables form his outer (lexical) scope even after the outer function has finished executing.
 
 ---
@@ -62,7 +62,7 @@ cart(); // output: Cart count: 3
 
 ## Q2: What is This Keyword in Javascript ?
 
-** Answer: **
+***Answer:***
 The `this` keyword is javascript refers to the object that is currently executing the function, and it's value determined by how the function is called.
 
 ---
@@ -127,7 +127,7 @@ console.log(shoppingCart.getTotalCost()); // Total cost: Rs: 70000
 
 ## Q3: What is Currying in JavaScript ? 
 
-** Answer: **  
+***Answer:***  
 `Currying` is a technique in javascript where a function is transformed into a sequence of functions, each taking one argument at a time instead of taking all argument at once.
 
 ---
@@ -166,14 +166,14 @@ console.log(twentyPercentDiscount(9895)); // 7916
 ---
 ## Q4: What is the DOM ? 
 
-** Answer: ** 
+***Answer:*** 
 The `DOM` (Document Object Model) is a programming interface for web documents that represents the HTML structure as a tree of objects, allowing JavaScript to dynamically access and manipulate content, structure, and styles.
 
 ---
 
 ## Q5: What is map method in js?
 
-** Answer: ** 
+***Answer:*** 
 The `map()` method in used to transform each element of an array and return a new array with the modified values.
 
 ---
@@ -195,7 +195,7 @@ Use: When render the UI like React.js and modify the data & map return the same 
 
 ## Q6: What is filter method in js?
 
-** Answer: ** 
+***Answer:*** 
 The `filter()` method is use to select elements from an array based on condition and return a new array with only the matching elements. 
 
 ---
@@ -214,7 +214,7 @@ console.log("Product: ", above30K); // Output: [{ id: 1, name: 'Laptop', price: 
 
 ## Q7: What is reduce method in js?
 
-** Answer: ** 
+***Answer:*** 
 The `reduce()` method is used to reduce an array to a single value by applying a function on each element and accumulating the result.
 
 ---
@@ -240,7 +240,7 @@ console.log("Total Price: ", totalPrice); // Output: 111437
 
 ## IMPORTANT :-> If reduce can do everything, why use map/filter?
 
-** Answer: **
+***Answer:***
 The `reduce()` method is a powerful array method that can replicate the behavior of `map()`, `filter()`, and even `forEach()` by using an accumulator to process and transform data in a single iteration.
 
 ==>: Although `reduce` can handle all operations, `map` and `filter` provide better readability and are more semantic. In real-world projects, we prefer `map` and `filter` for clarity, and use `reduce` when we need complex aggregation or optimization
@@ -296,7 +296,7 @@ const printPrice = orders.reduce((acc, order) => {
 
 ## Q8: What is forLoop in js ? 
 
-** Answer: ** 
+***Answer:*** 
 The `forEach()` method is used to iterate over an array and perform side effects, but it does not return a new array.
 
 ---
@@ -320,7 +320,7 @@ const printName = products.forEach((product) => {
 
 ## Q9: What is Event Loop in js?
 
-** Answer: ** 
+***Answer:*** 
 The `Event Loop` is a mechanism in JavaScript that continuously monitors the call stack and task queues, and executes asynchronous callbacks when the call stack is empty.
 
 Example: 
@@ -416,7 +416,7 @@ fetchData((data) => {
 
 ## Q11: What is Promise in javascript?
 
-** Answer: ** 
+***Answer:*** 
 A `Promise` in JavaScript represents the eventual completion (or failure) of an asynchronous operation and its resulting value. A promise can be in one of three states:
 
 *`Pending`: The initial state, where the operation has not completed yet.
@@ -436,7 +436,7 @@ Promise is replacement of callback
 
 ---
 ## Q12: What is the async/await in js?
-** Answer: ** 
+***Answer:*** 
 In JavaScript, `async and await` are keywords used to handle asynchronous operations (like fetching data or reading files) in a way that looks and feels like synchronous code. Introduced in ES2017, they are "syntactic sugar" built on top of `Promises` to make code cleaner and easier to read. 
 
 Example: 
@@ -456,7 +456,7 @@ async function getProducts() {
 
 ## Q13: What is Debouncing in js?
 
-** Answer: ** 
+***Answer:*** 
 `Debouncing` is a technique that delays the execution of a function until a specified time has passed after the last event trigger, preventing multiple rapid function calls.
 
 Example:
@@ -490,4 +490,64 @@ debouncedSearch("iphone");  /// Output API call for: iphone
 Debouncing is a performance optimization technique used to limit the execution of a function by delaying it until the user stops triggering the event. It is commonly used in scenarios like search inputs to avoid multiple API calls and improve performance.
 
 ---
+
+## What is Throttling in Js? 
+
+***Answer:***  
+Throttling is a technique in javascript where we control how many times a function can run in a given time.  
+// for Example: the scroll event can fire many times when the user scrolls. If we run our function on every scroll event, it can affect performance.  
+with throttling we can say that the function can run only once every 1 second, even if the scroll event happens many times.  
+
+Example:  
+```
+function throttle(func, delay) {
+  const lastTime = 0;
+  return function(){
+    const currentTime = Date.now();
+    if(currentTime - lastTime >= delay){
+      currentTime = lastTime;
+      func();
+    }
+  }
+}
+
+const handleScroll = throttle(() => {
+  console.log("Scrolling...")
+}, 1000)
+
+window.addEventListener('scroll', handleScroll);
+
+```  
+
+So, in simple words, throttling means running a function at most once in a specific time interval.
+
+We commonly use it with events like scroll, resize, and mousemove.  
+
+-----
+
+## What is the difference between function declaration, function expression, and arrow function?
+ 
+ ***Answer:***  
+ There are three common ways to declare the functions in JavaScript: `Function Declaration`, `Function Expression`, `Arrow Function`.
+ ### 1. Function Declaration  
+ :: A function declaration is a normal way of defining a function using the `function` keyword.  
+ Example:  
+
+ ```
+ function hello(){
+    console.log("Hello")
+ }
+ 
+ hello();
+ ```
+
+ *One important point is that function declaration is hoisted, so we can call the function before its definition.  
+
+ ```
+ hello()
+
+ function hello(){
+    console.log("Hello")
+ }
+ ```   
 
