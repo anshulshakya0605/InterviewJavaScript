@@ -491,7 +491,7 @@ Debouncing is a performance optimization technique used to limit the execution o
 
 ---
 
-## What is Throttling in Js? 
+## 14: What is Throttling in Js? 
 
 ***Answer:***  
 Throttling is a technique in javascript where we control how many times a function can run in a given time.  
@@ -521,11 +521,11 @@ window.addEventListener('scroll', handleScroll);
 
 So, in simple words, throttling means running a function at most once in a specific time interval.
 
-We commonly use it with events like scroll, resize, and mousemove.  
+We commonly use it with events like scroll, resize, and mouse move.  
 
 -----
 
-## What is the difference between function declaration, function expression, and arrow function?
+## 15: What is the difference between function declaration, function expression, and arrow function?
  
  ***Answer:***  
  There are three common ways to declare the functions in JavaScript: `Function Declaration`, `Function Expression`, `Arrow Function`.
@@ -551,3 +551,85 @@ We commonly use it with events like scroll, resize, and mousemove.
  }
  ```   
 
+-----
+-----
+
+## 16: what is the spread operator in js and why we use ?
+
+***Answer:***  
+The spread operator in JavaScript is used to expand elements of arrays or properties of objects. We mainly use it to copy, merge, and update data without directly modifying the original array or object. It is very useful in React for managing state updates.
+
+Example 1: Copying an array
+```
+const users ['Ram', 'Vikas', 'Anurag'];
+
+const updatedUsers = [...users, 'Prakas']
+
+console.log(updatedUsers); /// ['Ram', 'Vikas', 'Anurag', 'Prakas']
+```
+Example 2: Merging objects
+```
+const user = {
+  name: "Anshul",
+  role: "Developer"
+};
+
+const updatedUser = {
+  ...user,
+  experience: "2+ years"
+};
+
+console.log(updatedUser); // users = {
+    name: "Anshul",
+  role: "Developer",
+  experience: "2+ years"
+}
+```
+
+----
+----
+
+## 17: What is shallow copy and deep copy  in js and why we use it?
+
+***Answer:***  
+Shallow copy creates a new object, but nested objects still share the same reference with the original object. Deep copy creates a completely independent copy, including nested objects.  
+
+We use shallow copy for normal state updates and deep copy when we need complete independence between original and copied data. In React, we commonly use the spread operator to update state immutably.
+
+Example: Shallow Copy
+```
+const user = {
+  name: "Anshul",
+  address: {
+    city: "Noida"
+  }
+};
+
+const copiedUser = { ...user };
+
+copiedUser.name = "Rahul";
+copiedUser.address.city = "Delhi";
+
+console.log(user.name);          // Anshul
+console.log(user.address.city);  // Delhi
+```
+
+Example: Deep Copy
+```
+const user = {
+  name: "Anshul",
+  address: {
+    city: "Noida"
+  }
+};
+
+const copiedUser = structuredClone(user);
+
+copiedUser.address.city = "Delhi";
+
+console.log(user.address.city);        // Noida
+console.log(copiedUser.address.city);  // Delhi
+```
+
+----
+----
